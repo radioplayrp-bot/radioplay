@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rádio Play</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px 20px;
+    }
+
+    .logo {
+      font-size: 40px;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    .slogan {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .player {
+      margin: 40px 0;
+    }
+
+    audio {
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1ebe5d;
+    }
+
+    .section {
+      margin: 60px 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 10px auto;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Rádio Play</div>
+    <div class="slogan">Dê um play na vida 🎧</div>
+  </header>
+
+  <div class="player">
+    <h2>🔴 Ao vivo agora</h2>
+    <audio controls>
+      <source src="SEU_LINK_STREAM_AQUI" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+
+    <br>
+
+    <a class="btn" href="https://wa.me/5583991039161?text=Olá,%20quero%20pedir%20uma%20música!" target="_blank">
+      Pedir música no WhatsApp
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>📻 Programas</h2>
+
+    <div class="card">
+      <h3>Especial Jovem Guarda</h3>
+      <p>Os clássicos que marcaram época 🎶</p>
+    </div>
+
+    <div class="card">
+      <h3>Moda de Viola</h3>
+      <p>O melhor da música raiz 🌾</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📅 Programação</h2>
+
+    <div class="card">
+      <p>Manhã: Música variada</p>
+      <p>Tarde: Programas especiais</p>
+      <p>Noite: Flashbacks</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Rádio Play - Todos os direitos reservados
+  </footer>
+
+</body>
+</html>

@@ -1,141 +1,180 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Play</title>
-
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
-  text-align: center;
-}
+    .radio-jota-container {
+        background-color: #000000;
+        border: 2px solid #ffcc00;
+        border-radius: 15px;
+        padding: 25px;
+        max-width: 850px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+    }
 
-/* LOGO */
-.logo-img {
-  width: 180px;
-  border-radius: 50%;
-  box-shadow: 0 0 25px gold;
-  margin-top: 30px;
-}
+    .radio-jota-title {
+        color: #ffcc00;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        margin: 0 0 15px 0;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
-/* TEXTO */
-h1 {
-  color: gold;
-  margin: 10px 0;
-}
+    .radio-jota-subtitle {
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
 
-.slogan {
-  color: #ccc;
-  margin-bottom: 30px;
-}
+    /* Estilo do Botão de Play Geral */
+    .radio-jota-play-button {
+        max-width: 300px;
+        margin: 20px auto;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 0.2s ease;
+    }
 
-/* PLAYER */
-.player {
-  margin: 40px 0;
-}
+    .radio-jota-play-button:hover {
+        transform: scale(1.03);
+    }
 
-.play-btn {
-  background: gold;
-  color: black;
-  border: none;
-  padding: 15px 25px;
-  font-size: 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 0 20px gold;
-  transition: 0.3s;
-}
+    /* O Botão Interno que substitui a imagem que dava erro */
+    .play-btn-visual {
+        background: linear-gradient(135deg, #e6b800, #ffcc00);
+        color: #000000;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
+        font-size: 3.5rem;
+        font-weight: bold;
+        line-height: 1;
+        padding-left: 10px; /* Ajuste para o triângulo do play ficar bem centralizado */
+    }
 
-.play-btn:hover {
-  transform: scale(1.1);
-}
+    #jota-hidden-player {
+        display: none;
+    }
 
-/* SEÇÕES */
-.section {
-  max-width: 600px;
-  margin: 40px auto;
-}
+    /* EQUALIZADOR ANIMADO CORRIGIDO */
+    .radio-jota-visualizer {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        height: 35px;
+        align-items: flex-end;
+        margin: 25px 0;
+    }
 
-.card {
-  background: #111;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,215,0,0.2);
-}
+    .radio-jota-visualizer div {
+        width: 6px;
+        background-color: #ffcc00;
+        border-radius: 1px;
+    }
 
-/* BOTÃO WHATSAPP */
-.whatsapp {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #25D366;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-}
+    /* Animação que faz as barras subirem e descerem */
+    @keyframes pulse {
+        0% { height: 8px; }
+        50% { height: 35px; }
+        100% { height: 8px; }
+    }
 
-footer {
-  margin: 40px 0;
-  color: #777;
-}
+    .radio-jota-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .radio-jota-buttons a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 </style>
-</head>
 
-<body>
+<div class="radio-jota-container">
+    
+    <h2 class="radio-jota-title">RÁDIO PLAY</h2>
 
-<img src="https://i.postimg.cc/dQ505BSP/LOGO-REDONDO-200-X-200.png">
+    <div class="radio-jota-subtitle">
+        <span style="color: #ffcc00;">●</span> WEB RADIO<br>
+        <span style="font-size: 1.1rem; color: #ffffff;">Rádio Play - Ao Vivo</span>
+    </div>
 
-<h1>Rádio Play</h1>
-<div class="slogan">Dê um play na vida 🎧</div>
+    <div class="radio-jota-play-button" onclick="togglePlay()" id="jotaPlayBtn">
+        <div class="play-btn-visual" id="btnIcon">▶</div>
+    </div>
 
-<div class="player">
-  <h2>🔴 AO VIVO</h2>
-  <button class="play-btn" onclick="tocar()">▶️ Ouvir Rádio</button>
-  <audio id="radio" src="https://usa3.fastcast4u.com/proxy/radioplay/stream"></audio>
+    <audio id="jota-hidden-player" preload="metadata">
+        <source src="https://server22.srvsh.com.br:6752/stream" type="audio/mpeg">
+        Seu navegador não suporta este player.
+    </audio>
+
+    <div class="radio-jota-visualizer" id="jotaVisualizer">
+        <div style="height: 15px;"></div>
+        <div style="height: 25px;"></div>
+        <div style="height: 18px;"></div>
+        <div style="height: 28px;"></div>
+        <div style="height: 12px;"></div>
+        <div style="height: 22px;"></div>
+        <div style="height: 16px;"></div>
+        <div style="height: 26px;"></div>
+        <div style="height: 14px;"></div>
+        <div style="height: 20px;"></div>
+    </div>
+
+    <div class="radio-jota-buttons">
+        <a href="COLE_O_LINK_DO_ANDROID_AQUI" target="_blank" style="background-color: #689f38;">Android App</a>
+        <a href="COLE_O_LINK_DO_IPHONE_AQUI" target="_blank" style="background-color: #b01a4a;">iPhone App</a>
+        <a href="COLE_O_LINK_DO_WINDOWS_AQUI" target="_blank" style="background-color: #0078d7;">Windows App</a>
+        <a href="COLE_OUTRO_LINK_AQUI" target="_blank" style="background-color: #444444;">Baixar App 4</a>
+    </div>
+
 </div>
-
-<a class="whatsapp" href="https://wa.me/5583991039161?text=Olá,%20quero%20pedir%20uma%20música!" target="_blank">
-  Pedir música no WhatsApp
-</a>
-
-<div class="section">
-  <h2>📻 Programas</h2>
-
-  <div class="card">
-    <h3>Show da manhã 8:00</h3>
-    <p>Show da play 14:00 🎶</p>
-  </div>
-
-  <div class="card">
-    <h3>Madrugada play 00:00</h3>
-    <p>Desperta play 4;00 🌾</p>
-  </div>
-</div>
-
-<div class="section">
-  <h2>📅 Programação</h2>
-
-  <div class="card">
-    <p>Manhã: Show da manhã</p>
-    <p>Tarde: Show da play</p>
-    <p>Noite:Madrugada play</p>
-  </div>
-</div>
-
-<footer>
-  © 2026 Rádio Play
-</footer>
 
 <script>
-function tocar() {
-  document.getElementById("radio").play();
-}
-</script>
+    var jPlayer = document.getElementById('jota-hidden-player');
+    var jBtnIcon = document.getElementById('btnIcon');
+    var jBarsContainer = document.getElementById('jotaVisualizer');
+    var jBars = jBarsContainer.getElementsByTagName('div');
 
-</body>
-</html>
+    function togglePlay() {
+        if (jPlayer.paused) {
+            jPlayer.play();
+            // Muda o ícone para Pause e ajusta o preenchimento interno
+            jBtnIcon.innerHTML = "❚❚";
+            jBtnIcon.style.paddingLeft = "0px"; 
+            
+            // Ativa o movimento real das barras douradas
+            for (var i = 0; i < jBars.length; i++) {
+                jBars[i].style.animation = "pulse " + (Math.random() * 0.4 + 0.4) + "s infinite ease-in-out";
+                jBars[i].style.animationDelay = (i * 0.08) + "s";
+            }
+        } else {
+            jPlayer.pause();
+            // Volta o ícone para Play
+            jBtnIcon.innerHTML = "▶";
+            jBtnIcon.style.paddingLeft = "10px";
+            
+            // Pausa o movimento das barras
+            for (var i = 0; i < jBars.length; i++) {
+                jBars[i].style.animation = "none";
+                jBars[i].style.height = (i % 2 == 0 ? "15" : "22") + "px";
+            }
+        }
+    }
+</script>

@@ -1,18 +1,18 @@
 <style>
     .radio-jota-container {
         background-color: #000000;
-        border: 2px solid #ffcc00;
+        border: 2px solid #b8860b; /* Borda em Bronze/Ouro Velho */
         border-radius: 15px;
         padding: 25px;
         max-width: 850px;
         margin: 0 auto;
         text-align: center;
         font-family: 'Arial', sans-serif;
-        box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+        box-shadow: 0 0 15px rgba(184, 134, 11, 0.2);
     }
 
     .radio-jota-title {
-        color: #ffcc00;
+        color: #cd7f32; /* Bronze Metálico */
         font-size: 1.8rem;
         letter-spacing: 2px;
         margin: 0 0 15px 0;
@@ -40,9 +40,9 @@
         transform: scale(1.03);
     }
 
-    /* O Botão Interno que substitui a imagem que dava erro */
+    /* Botão Central na cor Bronze Escuro Metálico */
     .play-btn-visual {
-        background: linear-gradient(135deg, #e6b800, #ffcc00);
+        background: linear-gradient(135deg, #8c6239, #cd7f32);
         color: #000000;
         border-radius: 50%;
         width: 120px;
@@ -51,18 +51,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
+        box-shadow: 0 0 25px rgba(205, 127, 50, 0.4);
         font-size: 3.5rem;
         font-weight: bold;
         line-height: 1;
-        padding-left: 10px; /* Ajuste para o triângulo do play ficar bem centralizado */
+        padding-left: 10px;
     }
 
     #jota-hidden-player {
         display: none;
     }
 
-    /* EQUALIZADOR ANIMADO CORRIGIDO */
+    /* EQUALIZADOR ANIMADO EM TOM DE BRONZE */
     .radio-jota-visualizer {
         display: flex;
         justify-content: center;
@@ -74,7 +74,7 @@
 
     .radio-jota-visualizer div {
         width: 6px;
-        background-color: #ffcc00;
+        background-color: #cd7f32;
         border-radius: 1px;
     }
 
@@ -85,12 +85,34 @@
         100% { height: 8px; }
     }
 
+    /* BLOCO DOS PARCEIROS AJUSTADO E ALINHADO COM OS BOTÕES */
+    .radio-jota-partners {
+        max-width: 530px; /* Largura limite para casar certinho com o tamanho dos botões */
+        margin: 25px auto 15px auto; /* Centralizado, logo acima dos botões */
+        background-color: #111111;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px dashed #444444;
+        box-sizing: border-box;
+    }
+
+    .radio-jota-partners img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+
+    /* Botões dos Aplicativos */
     .radio-jota-buttons {
         display: flex;
         justify-content: center;
         gap: 12px;
-        margin-top: 25px;
+        margin-top: 0;
         flex-wrap: wrap;
+        max-width: 530px; /* Mesma largura máxima dos parceiros para alinhar */
+        margin: 0 auto;
     }
 
     .radio-jota-buttons a {
@@ -111,7 +133,7 @@
     <h2 class="radio-jota-title">RÁDIO PLAY</h2>
 
     <div class="radio-jota-subtitle">
-        <span style="color: #ffcc00;">●</span> WEB RADIO<br>
+        <span style="color: #cd7f32;">●</span> WEB RADIO<br>
         <span style="font-size: 1.1rem; color: #ffffff;">Rádio Play - Ao Vivo</span>
     </div>
 
@@ -137,6 +159,10 @@
         <div style="height: 20px;"></div>
     </div>
 
+    <div class="radio-jota-partners">
+        <img src="https://i.postimg.cc/xdPB4mcH/anigif-02.gif" alt="Banner Parceiros">
+    </div>
+
     <div class="radio-jota-buttons">
         <a href="COLE_O_LINK_DO_ANDROID_AQUI" target="_blank" style="background-color: #689f38;">Android App</a>
         <a href="COLE_O_LINK_DO_IPHONE_AQUI" target="_blank" style="background-color: #b01a4a;">iPhone App</a>
@@ -155,22 +181,18 @@
     function togglePlay() {
         if (jPlayer.paused) {
             jPlayer.play();
-            // Muda o ícone para Pause e ajusta o preenchimento interno
             jBtnIcon.innerHTML = "❚❚";
             jBtnIcon.style.paddingLeft = "0px"; 
             
-            // Ativa o movimento real das barras douradas
             for (var i = 0; i < jBars.length; i++) {
                 jBars[i].style.animation = "pulse " + (Math.random() * 0.4 + 0.4) + "s infinite ease-in-out";
                 jBars[i].style.animationDelay = (i * 0.08) + "s";
             }
         } else {
             jPlayer.pause();
-            // Volta o ícone para Play
             jBtnIcon.innerHTML = "▶";
             jBtnIcon.style.paddingLeft = "10px";
             
-            // Pausa o movimento das barras
             for (var i = 0; i < jBars.length; i++) {
                 jBars[i].style.animation = "none";
                 jBars[i].style.height = (i % 2 == 0 ? "15" : "22") + "px";
